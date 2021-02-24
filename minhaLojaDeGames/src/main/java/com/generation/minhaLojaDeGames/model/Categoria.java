@@ -1,12 +1,18 @@
 package com.generation.minhaLojaDeGames.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_categoria")
@@ -18,7 +24,11 @@ public class Categoria {
 	
 	@NotNull
 	@Size(min = 10, max = 150)
-	private String nomeProduto;
+	private String nomeCategoria;
+	
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("categoria")
+	private List<Produto> produto;
 
 	public long getId() {
 		return id;
@@ -28,12 +38,20 @@ public class Categoria {
 		this.id = id;
 	}
 
-	public String getNomeProduto() {
-		return nomeProduto;
+	public String getNomeCategoria() {
+		return nomeCategoria;
 	}
 
-	public void setNomeProduto(String nomeProduto) {
-		this.nomeProduto = nomeProduto;
+	public void setNomeCategoria(String nomeCategoria) {
+		this.nomeCategoria = nomeCategoria;
+	}
+
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
 	}
 
 }
