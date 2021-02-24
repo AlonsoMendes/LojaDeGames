@@ -1,6 +1,5 @@
 package com.generation.minhaLojaDeGames.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,8 @@ import com.generation.minhaLojaDeGames.model.Categoria;
 import com.generation.minhaLojaDeGames.repository.CategoriaRepository;
 
 @RestController
-@RequestMapping("/postagena")
-@CrossOrigin
+@RequestMapping("/categoria")
+@CrossOrigin("*")
 public class CategoriaController {
 	
 	@Autowired
@@ -40,8 +39,8 @@ public class CategoriaController {
 	}
 	
 	@GetMapping("/nomeProduto/{nomeProduto}")
-	public ResponseEntity<List<Categoria>> GetByTitulo(@PathVariable String nomeProduto){
-		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(nomeProduto));
+	public ResponseEntity<List<Categoria>> GetByNomeProduto(@PathVariable String nomeProduto){
+		return ResponseEntity.ok(repository.findAllByNomeProdutoContainingIgnoreCase(nomeProduto));
 	}
 	
 	@PostMapping
