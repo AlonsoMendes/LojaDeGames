@@ -18,7 +18,7 @@ public class Categoria {
 	
 	@NotNull
 	@Size(min = 10, max = 150)
-	private String nome;
+	private String nomeProduto;
 
 	public long getId() {
 		return id;
@@ -28,12 +28,12 @@ public class Categoria {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getNomeProduto() {
+		return nomeProduto;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
 	}
 
 }
